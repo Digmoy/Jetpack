@@ -10,13 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
-            android:name=".DemoOneActivity"
+            android:name=".DataBindingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".DemoTwoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DemoOneActivity"
+            android:exported="true">
+
         </activity>
     </application>
 
