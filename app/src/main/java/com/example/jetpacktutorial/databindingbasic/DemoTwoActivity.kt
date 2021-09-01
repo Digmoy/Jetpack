@@ -1,4 +1,4 @@
-package com.example.jetpacktutorial.DataBindingBasic
+package com.example.jetpacktutorial.databindingbasic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="user"
-            type="com.example.jetpacktutorial.DataBindingBasic.UserModel" />
+            type="com.example.jetpacktutorial.databindingbasic.UserModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".DataBindingBasic.DemoTwoActivity">
+        tools:context=".databindingbasic.DemoTwoActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

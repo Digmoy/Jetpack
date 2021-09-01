@@ -1,11 +1,11 @@
-package com.example.jetpacktutorial.DataBindingBasic
+package com.example.jetpacktutorial.databindingbasic
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.jetpacktutorial.R
-import com.example.jetpacktutorial.ViewModelBasic.ViewModelOneActivity
+import com.example.jetpacktutorial.viewmodelbasic.ViewModelOneActivity
 import com.example.jetpacktutorial.databinding.ActivityDataBindingBinding
 
 class DataBindingActivity : AppCompatActivity() {

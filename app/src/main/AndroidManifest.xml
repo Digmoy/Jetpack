@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
-            android:name=".ViewModelBasic.ViewModelOneActivity"
+            android:name=".viewmodelbasic.ViewModelOneActivity"
             android:exported="true" />
         <activity
-            android:name=".DataBindingBasic.DataBindingActivity"
+            android:name=".databindingbasic.DataBindingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DataBindingBasic.DemoTwoActivity"
+            android:name=".databindingbasic.DemoTwoActivity"
             android:exported="true" />
         <activity
-            android:name=".DataBindingBasic.DemoOneActivity"
+            android:name=".databindingbasic.DemoOneActivity"
             android:exported="true"></activity>
     </application>
 

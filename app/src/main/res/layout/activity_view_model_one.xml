@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewModelBasic.ViewModelOneActivity">
+        tools:context=".viewmodelbasic.ViewModelOneActivity">
 
         <TextView
             android:id="@+id/tv_count"
