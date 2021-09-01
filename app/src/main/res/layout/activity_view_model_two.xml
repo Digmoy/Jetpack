@@ -4,6 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.example.jetpacktutorial.viewmodelbasic.ViewModelTwo" />
+        
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,13 +20,19 @@
 
         <EditText
             android:id="@+id/ed_input"
-            android:layout_above="@+id/btn_click"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_click"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
             android:hint="Enter number"
             android:inputType="number"
-            android:layout_centerInParent="true"
-            android:layout_margin="15dp"/>
+            android:text="@={myViewModel.inputText}"/>
 
         <Button
             android:id="@+id/btn_click"
@@ -33,7 +46,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:text="Click here"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:onClick="@{()->myViewModel.setTotal()}"/>
 
 
         <TextView
@@ -41,8 +55,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_click"
-            android:layout_margin="15dp"
-            android:text=""
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@{String.valueOf(myViewModel.totalData)}"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

@@ -1,5 +1,6 @@
 package com.example.jetpacktutorial.viewmodelbasic
 
+import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,9 @@ class ViewModelTwo(value : Int) : ViewModel() {
 
     get() = total
 
+    @Bindable
+    val inputText = MutableLiveData<String>()
+
     init {
         total.value = value
     }
@@ -18,7 +22,8 @@ class ViewModelTwo(value : Int) : ViewModel() {
 //        return total
 //    }
 
-    fun setTotal(input : Int){
-        total.value = (total.value)?.plus(input)
+    fun setTotal(){
+        val intInput : Int = inputText.value!!.toInt()
+        total.value = (total.value)?.plus(intInput)
     }
 }

@@ -23,16 +23,19 @@ class ViewModelTwoActivity : AppCompatActivity() {
 
         factory = ViewModelFactory(1)
         viewModel = ViewModelProvider(this,factory)[ViewModelTwo::class.java]
+        binding.myViewModel = viewModel
+        binding.lifecycleOwner = this
 
-        viewModel.totalData.observe(this, Observer {
+
+       /* viewModel.totalData.observe(this, Observer {
             binding.tvResult.text = it.toString()
-        })
+        })*/
 
 
-        binding.btnClick.setOnClickListener {
+       /* binding.btnClick.setOnClickListener {
             Log.e("shgfskdhlkg","ksghklshdk")
             viewModel.setTotal(binding.edInput.text.toString().toInt())
-        }
+        }*/
 
     }
 }
