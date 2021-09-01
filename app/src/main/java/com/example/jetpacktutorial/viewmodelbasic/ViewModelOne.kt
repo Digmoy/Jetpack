@@ -1,16 +1,21 @@
 package com.example.jetpacktutorial.viewmodelbasic
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ViewModelOne : ViewModel() {
 
-    private var count = 0
+    var count = MutableLiveData<Int>()
 
-    fun getCurrentCount() : Int{
-        return count
+    init {
+        count.value = 0
     }
 
-    fun getUpdatedCount() : Int{
-        return ++count
+//    fun getCurrentCount() : Int{
+//        return count
+//    }
+
+    fun getUpdatedCount(){
+        count.value = (count.value)?.plus(1)
     }
 }
