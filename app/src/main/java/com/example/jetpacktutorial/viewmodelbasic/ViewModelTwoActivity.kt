@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.jetpacktutorial.R
 import com.example.jetpacktutorial.databinding.ActivityViewModelTwoBinding
@@ -23,12 +24,14 @@ class ViewModelTwoActivity : AppCompatActivity() {
         factory = ViewModelFactory(1)
         viewModel = ViewModelProvider(this,factory)[ViewModelTwo::class.java]
 
-        binding.tvResult.text = viewModel.getTotal().toString()
+        viewModel.totalData.observe(this, Observer {
+            binding.tvResult.text = it.toString()
+        })
+
 
         binding.btnClick.setOnClickListener {
             Log.e("shgfskdhlkg","ksghklshdk")
             viewModel.setTotal(binding.edInput.text.toString().toInt())
-            binding.tvResult.text = viewModel.getTotal().toString()
         }
 
     }
