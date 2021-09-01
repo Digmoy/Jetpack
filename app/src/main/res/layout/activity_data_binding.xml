@@ -11,53 +11,71 @@
         android:orientation="vertical"
         tools:context=".databindingbasic.DataBindingActivity">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_one"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="DataBinding Demo One"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="normal"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
 
-            <Button
-                android:id="@+id/btn_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="DataBinding Demo Two"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="normal"/>
+                <Button
+                    android:id="@+id/btn_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="DataBinding Demo One"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
 
-            <Button
-                android:id="@+id/btn_three"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="ViewModel Demo One"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="normal"/>
+                <Button
+                    android:id="@+id/btn_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="DataBinding Demo Two"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
 
-            <Button
-                android:id="@+id/btn_four"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="ViewModel Demo Two"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="normal"/>
+                <Button
+                    android:id="@+id/btn_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="ViewModel Demo One"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="ViewModel Demo Two"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
+
+                <Button
+                    android:id="@+id/btn_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="Two way DataBinding Demo one"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
 
     </LinearLayout>
 
