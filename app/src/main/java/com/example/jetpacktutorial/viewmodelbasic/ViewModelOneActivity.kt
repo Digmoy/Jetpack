@@ -19,10 +19,12 @@ class ViewModelOneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[ViewModelOne::class.java]
+        binding.lifecycleOwner = this
         binding.myViewModel = viewModel
-        viewModel.count.observe(this, Observer {
+
+/*        viewModel.count.observe(this, Observer {
             binding.tvCount.text = it.toString()
-        })
+        })*/
 
 
 /*        binding.btnClick.setOnClickListener {
