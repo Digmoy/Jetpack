@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.jetpacktutorial.R
+import com.example.jetpacktutorial.ViewModelBasic.ViewModelOneActivity
 import com.example.jetpacktutorial.databinding.ActivityDataBindingBinding
 
 class DataBindingActivity : AppCompatActivity() {
@@ -23,6 +24,11 @@ class DataBindingActivity : AppCompatActivity() {
 
         binding.btnTwo.setOnClickListener {
             val intent = Intent(this, DemoTwoActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnThree.setOnClickListener {
+            val intent = Intent(this, ViewModelOneActivity::class.java)
             startActivity(intent)
         }
 
