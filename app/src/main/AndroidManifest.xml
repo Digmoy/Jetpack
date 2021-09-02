@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
+            android:name=".navigationcomponent.NavOneActivity"
+            android:exported="true" />
+        <activity
             android:name=".twowaydatabinding.TwoWayOneActivity"
             android:exported="true" />
         <activity
