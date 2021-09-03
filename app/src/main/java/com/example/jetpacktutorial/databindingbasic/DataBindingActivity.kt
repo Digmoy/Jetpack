@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.jetpacktutorial.R
+import com.example.jetpacktutorial.coroutine.CoroutineOneActivity
 import com.example.jetpacktutorial.viewmodelbasic.ViewModelOneActivity
 import com.example.jetpacktutorial.databinding.ActivityDataBindingBinding
 import com.example.jetpacktutorial.navigationcomponent.NavOneActivity
@@ -47,6 +48,11 @@ class DataBindingActivity : AppCompatActivity() {
 
         binding.btnSix.setOnClickListener {
             val intent = Intent(this, NavOneActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSeven.setOnClickListener {
+            val intent = Intent(this, CoroutineOneActivity::class.java)
             startActivity(intent)
         }
 

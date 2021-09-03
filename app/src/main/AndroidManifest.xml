@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
+            android:name=".coroutine.CoroutineTwoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".coroutine.CoroutineOneActivity"
+            android:exported="true" />
+        <activity
             android:name=".navigationcomponent.NavOneActivity"
             android:exported="true" />
         <activity
