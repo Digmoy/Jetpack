@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
+            android:name=".roomdb.RoomOneActivity"
+            android:exported="true" />
+        <activity
             android:name=".coroutine.CoroutineThreeActivity"
             android:exported="true" />
         <activity
