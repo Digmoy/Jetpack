@@ -16,7 +16,7 @@ class CoroutineThreeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_coroutine_three)
 
         viewModel = ViewModelProvider(this)[ViewModelOne::class.java]
-        viewModel.getUserData()
+       // viewModel.getUserData()
 
         viewModel.users.observe(this, Observer {myUsers ->
             myUsers.forEach{
