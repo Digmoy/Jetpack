@@ -3,17 +3,24 @@ package com.example.jetpacktutorial.coroutine
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.DataBindingUtil
 import com.example.jetpacktutorial.R
+import com.example.jetpacktutorial.databinding.ActivityCoroutineTwoBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CoroutineTwoActivity : AppCompatActivity() {
+
+    private val binding : ActivityCoroutineTwoBinding by lazy {
+        DataBindingUtil.setContentView(this,R.layout.activity_coroutine_two)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coroutine_two)
 
         //Main Thread if u want
         CoroutineScope(IO).launch {
@@ -42,6 +49,18 @@ class CoroutineTwoActivity : AppCompatActivity() {
 
             val total = stockOne.await()+stockTwo.await()
             Log.i("MyTag","Total is $total")*/
+        }
+
+        binding.btnUnstructured.setOnClickListener {
+            CoroutineScope(Main).launch {
+                binding.tvUnstructured.text = UserUnStructured().getTotalUserCount().toString()
+            }
+        }
+
+        binding.btnStructured.setOnClickListener {
+            CoroutineScope(Main).launch {
+                binding.tvStructured.text = UserStructure().getTotalUserCount().toString()
+            }
         }
     }
 
