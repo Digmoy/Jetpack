@@ -11,16 +11,14 @@ import com.example.jetpacktutorial.databinding.ActivityViewModelTwoBinding
 
 class ViewModelTwoActivity : AppCompatActivity() {
 
-    private val binding : ActivityViewModelTwoBinding by lazy {
-        DataBindingUtil.setContentView(this,R.layout.activity_view_model_two)
-    }
+    private lateinit var binding : ActivityViewModelTwoBinding
 
     private lateinit var viewModel : ViewModelTwo
     private lateinit var factory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_view_model_two)
         factory = ViewModelFactory(1)
         viewModel = ViewModelProvider(this,factory)[ViewModelTwo::class.java]
         binding.myViewModel = viewModel

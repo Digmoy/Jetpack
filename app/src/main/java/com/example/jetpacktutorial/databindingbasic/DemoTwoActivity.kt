@@ -8,12 +8,11 @@ import com.example.jetpacktutorial.databinding.ActivityDemoTwoBinding
 
 class DemoTwoActivity : AppCompatActivity() {
 
-    private val binding : ActivityDemoTwoBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_demo_two)
-    }
+    private lateinit var binding : ActivityDemoTwoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_demo_two)
             binding.user = getUser()
 //        val user : UserModel = getUser()
 //        binding.name.text = user.name

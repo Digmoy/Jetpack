@@ -11,17 +11,17 @@ import com.example.jetpacktutorial.coroutine.CoroutineTwoActivity
 import com.example.jetpacktutorial.viewmodelbasic.ViewModelOneActivity
 import com.example.jetpacktutorial.databinding.ActivityDataBindingBinding
 import com.example.jetpacktutorial.navigationcomponent.NavOneActivity
+import com.example.jetpacktutorial.roomdb.RoomOneActivity
 import com.example.jetpacktutorial.twowaydatabinding.TwoWayOneActivity
 import com.example.jetpacktutorial.viewmodelbasic.ViewModelTwoActivity
 
 class DataBindingActivity : AppCompatActivity() {
 
-    private val binding : ActivityDataBindingBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_data_binding)
-    }
+    private lateinit var  binding : ActivityDataBindingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding =  DataBindingUtil.setContentView(this, R.layout.activity_data_binding)
 
         binding.btnOne.setOnClickListener {
             val intent = Intent(this, DemoOneActivity::class.java)
@@ -65,6 +65,11 @@ class DataBindingActivity : AppCompatActivity() {
 
         binding.btnNine.setOnClickListener {
             val intent = Intent(this, CoroutineThreeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTen.setOnClickListener {
+            val intent = Intent(this, RoomOneActivity::class.java)
             startActivity(intent)
         }
 

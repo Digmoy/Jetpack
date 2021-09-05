@@ -14,15 +14,13 @@ import kotlinx.coroutines.launch
 
 class CoroutineOneActivity : AppCompatActivity() {
 
-    private val binding : ActivityCoroutineOneBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_coroutine_one)
-    }
+    private lateinit var binding : ActivityCoroutineOneBinding
 
     private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding =  DataBindingUtil.setContentView(this, R.layout.activity_coroutine_one)
         binding.btnCount.setOnClickListener {
             binding.tvCount.text = count++.toString()
         }

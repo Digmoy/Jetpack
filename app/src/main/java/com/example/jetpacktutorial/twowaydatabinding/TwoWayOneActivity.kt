@@ -9,14 +9,13 @@ import com.example.jetpacktutorial.databinding.ActivityTwoWayOneBinding
 
 class TwoWayOneActivity : AppCompatActivity() {
 
-    private val binding : ActivityTwoWayOneBinding by lazy {
-        DataBindingUtil.setContentView(this,R.layout.activity_two_way_one)
-    }
+    private lateinit var binding : ActivityTwoWayOneBinding
+
     private lateinit var viewModel : ViewModelOne
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_two_way_one)
         viewModel = ViewModelProvider(this)[ViewModelOne::class.java]
         binding.myViewModel = viewModel
         binding.lifecycleOwner = this

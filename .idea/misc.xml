@@ -12,11 +12,13 @@
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_nav_one.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_recyler_view_one.xml" value="0.20416666666666666" />
+        <entry key="..\:/Jetpack/app/src/main/res/layout/activity_room_one.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_two_way_one.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_view_model_one.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/activity_view_model_two.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Jetpack/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+        <entry key="..\:/Jetpack/app/src/main/res/layout/list_item.xml" value="0.25" />
       </map>
     </option>
   </component>

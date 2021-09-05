@@ -15,13 +15,11 @@ import kotlinx.coroutines.launch
 
 class CoroutineTwoActivity : AppCompatActivity() {
 
-    private val binding : ActivityCoroutineTwoBinding by lazy {
-        DataBindingUtil.setContentView(this,R.layout.activity_coroutine_two)
-    }
+    private lateinit var binding : ActivityCoroutineTwoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_coroutine_two)
         //Main Thread if u want
         CoroutineScope(IO).launch {
 

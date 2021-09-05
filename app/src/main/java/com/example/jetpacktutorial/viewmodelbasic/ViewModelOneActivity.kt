@@ -10,14 +10,13 @@ import com.example.jetpacktutorial.databinding.ActivityViewModelOneBinding
 
 class ViewModelOneActivity : AppCompatActivity() {
 
-    private val binding : ActivityViewModelOneBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_view_model_one)
-    }
+    private lateinit var binding : ActivityViewModelOneBinding
 
     private lateinit var viewModel : ViewModelOne
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding =  DataBindingUtil.setContentView(this, R.layout.activity_view_model_one)
         viewModel = ViewModelProvider(this)[ViewModelOne::class.java]
         binding.lifecycleOwner = this
         binding.myViewModel = viewModel

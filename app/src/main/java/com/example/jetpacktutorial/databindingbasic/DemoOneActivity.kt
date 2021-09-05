@@ -8,23 +8,20 @@ import com.example.jetpacktutorial.databinding.ActivityDemoOneBinding
 
 class DemoOneActivity : AppCompatActivity() {
 
-    private val binding : ActivityDemoOneBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_demo_one)
-    }
+    private lateinit var binding : ActivityDemoOneBinding
 
    // private lateinit var binding : ActivityDemoOneBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      //  binding = DataBindingUtil.setContentView(this,R.layout.activity_demo_one)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_demo_one)
         binding.btnSubmit.setOnClickListener {
             displayName()
         }
     }
 
     private fun displayName() {
-        binding.apply {
-            userName.text = "Hello! "+name.text
-        }
+        binding.userName.text = "Hello! "+binding.name.text
+
     }
 }
