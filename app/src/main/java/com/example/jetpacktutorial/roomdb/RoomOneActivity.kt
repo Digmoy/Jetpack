@@ -30,6 +30,12 @@ class RoomOneActivity : AppCompatActivity() {
 
         initRecyclerView()
 
+        viewModel.massage.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(this,it,Toast.LENGTH_LONG).show()
+            }
+        })
+
     }
 
     private fun initRecyclerView(){
@@ -50,5 +56,6 @@ class RoomOneActivity : AppCompatActivity() {
 
     private fun listItemClicked(user : User){
         Toast.makeText(this,"selected name is ${user.name}",Toast.LENGTH_LONG).show()
+        viewModel.initUpdateAndDelete(user)
     }
 }
