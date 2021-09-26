@@ -9,8 +9,9 @@ import com.example.jetpacktutorial.databinding.ListItemBinding
 import com.example.jetpacktutorial.generated.callback.OnClickListener
 import com.example.jetpacktutorial.roomdb.model.User
 
-class UserAdapter(private val users : List<User>,private val clickListener: (User)->Unit) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
+class UserAdapter(private val clickListener: (User)->Unit) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
+    private val users = ArrayList<User>()
 
     inner class MyViewHolder(val binding : ListItemBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -30,6 +31,11 @@ class UserAdapter(private val users : List<User>,private val clickListener: (Use
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(users[position],clickListener)
+    }
+
+    fun setList(user : List<User>) {
+        users.clear()
+        users.addAll(user)
     }
 
     override fun getItemCount(): Int {

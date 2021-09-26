@@ -17,6 +17,7 @@ class RoomOneActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRoomOneBinding
     private lateinit var viewModel: UserViewModel
+    private lateinit var adapter: UserAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_room_one)
@@ -40,17 +41,17 @@ class RoomOneActivity : AppCompatActivity() {
 
     private fun initRecyclerView(){
         binding.recUser.layoutManager = LinearLayoutManager(this)
+        adapter = UserAdapter { selectedItem: User ->listItemClicked(selectedItem) }
+        binding.recUser.adapter = adapter
         displayUserList()
     }
 
     private fun displayUserList(){
         viewModel.users.observe(this, Observer {
             Log.i("MyTag",it.toString())
-            binding.recUser.adapter = UserAdapter(it) { selectedItem: User ->
-                listItemClicked(
-                    selectedItem
-                )
-            }
+            adapter.setList(it)
+            adapter.notifyDataSetChanged()
+
         })
     }
 

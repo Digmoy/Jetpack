@@ -7,19 +7,19 @@ class UserRepository(private val userDAO: UserDAO) {
 
     val users = userDAO.getAllUser()
 
-    suspend fun insert(user: User){
-        userDAO.insertUser(user)
+    suspend fun insert(user: User) : Long{
+       return userDAO.insertUser(user)
     }
 
-    suspend fun update(user: User){
-        userDAO.updateUser(user)
+    suspend fun update(user: User) : Int{
+       return userDAO.updateUser(user)
     }
 
-    suspend fun delete(user: User){
-        userDAO.deleteUser(user)
+    suspend fun delete(user: User) : Int{
+       return userDAO.deleteUser(user)
     }
 
-    suspend fun deleteAll(){
-        userDAO.deleteAll()
+    suspend fun deleteAll() : Int{
+       return userDAO.deleteAll()
     }
 }

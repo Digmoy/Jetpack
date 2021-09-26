@@ -1,5 +1,6 @@
 package com.example.jetpacktutorial.roomdb
 
+import android.util.Patterns
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetpacktutorial.roomdb.model.User
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 
 class UserViewModel(private val repository: UserRepository) : ViewModel(), Observable {
@@ -40,71 +42,101 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(), Obser
     }
 
     fun saveOrUpdate(){
-        if (isUpdateOrDelete){
-            userToUpdateOrDelete.name = inputName.value!!
-            userToUpdateOrDelete.email = inputEmail.value!!
 
-            update(userToUpdateOrDelete)
+        if (inputName.value == null){
+            statusMassage.value = Event("Please enter user's name")
+        }
+        else if (inputEmail.value == null)
+        {
+            statusMassage.value = Event("Please enter user's email address")
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(inputEmail.value!!).matches())
+        {
+            statusMassage.value = Event("Please enter valid email address")
         }
         else
         {
-            val name = inputName.value!!
-            val email = inputEmail.value!!
+            if (isUpdateOrDelete) {
+                userToUpdateOrDelete.name = inputName.value!!
+                userToUpdateOrDelete.email = inputEmail.value!!
 
-            insert(User(0,name,email))
+                update(userToUpdateOrDelete)
+            } else {
+                val name = inputName.value!!
+                val email = inputEmail.value!!
 
-            inputName.value = null
-            inputEmail.value = null
+                insert(User(0, name, email))
+
+                inputName.value = null
+                inputEmail.value = null
+            }
         }
-
 
     }
 
     fun clearAllOrDelete(){
-
-        if (isUpdateOrDelete)
-        {
+        if (isUpdateOrDelete) {
             delete(userToUpdateOrDelete)
-        }
-        else
-        {
+        } else {
             clearAll()
         }
 
     }
 
     fun insert(user : User) = viewModelScope.launch {
-            repository.insert(user)
-            statusMassage.value = Event("User Inserted Successfully")
+        val newRowId = repository.insert(user)
+
+        if (newRowId > -1) {
+            statusMassage.value = Event("User Inserted Successfully $newRowId")
+        } else {
+            statusMassage.value = Event("Error Occurred")
+        }
+
 
     }
 
     fun update(user : User) = viewModelScope.launch {
-        repository.update(user)
+        val noOfRow = repository.update(user)
 
-        inputName.value = null
-        inputEmail.value = null
-        isUpdateOrDelete = false
+        if (noOfRow > 0) {
+            inputName.value = null
+            inputEmail.value = null
+            isUpdateOrDelete = false
 
-        saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear All"
-        statusMassage.value = Event("User Updated Successfully")
+            saveOrUpdateButtonText.value = "Save"
+            clearAllOrDeleteButtonText.value = "Clear All"
+            statusMassage.value = Event("$noOfRow Updated Successfully")
+        } else {
+            statusMassage.value = Event("Error Occurred")
+        }
+
     }
 
     fun delete (user: User) = viewModelScope.launch {
-        repository.delete(user)
+        val nowOfRowsDeleted = repository.delete(user)
 
-        inputName.value = null
-        inputEmail.value = null
-        isUpdateOrDelete = false
+        if (nowOfRowsDeleted > 0) {
+            inputName.value = null
+            inputEmail.value = null
+            isUpdateOrDelete = false
 
-        saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear All"
-        statusMassage.value = Event("User Deleted Successfully")
+            saveOrUpdateButtonText.value = "Save"
+            clearAllOrDeleteButtonText.value = "Clear All"
+            statusMassage.value = Event("User Deleted Successfully $nowOfRowsDeleted")
+        } else {
+            statusMassage.value = Event("Error Occurred")
+        }
+
+
     }
     fun clearAll() = viewModelScope.launch {
-        repository.deleteAll()
-        statusMassage.value = Event("All User Deleted Successfully")
+        val noOfRowsDeleted = repository.deleteAll()
+        if (noOfRowsDeleted > 0) {
+            statusMassage.value = Event("$noOfRowsDeleted User Deleted Successfully")
+        } else {
+            statusMassage.value = Event("Error Occurred")
+        }
+
     }
 
     fun initUpdateAndDelete(user: User){
