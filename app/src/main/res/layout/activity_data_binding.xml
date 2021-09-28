@@ -131,6 +131,16 @@
                     android:textSize="18sp"
                     android:textStyle="normal"/>
 
+                <Button
+                    android:id="@+id/btn_twelve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="Notification Demo One"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"/>
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
