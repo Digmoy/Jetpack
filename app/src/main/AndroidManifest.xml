@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackTutorial">
         <activity
+            android:name=".workmanager.WorkManagerOneActivity"
+            android:exported="true" />
+        <activity
             android:name=".notification.NotificationTwoActivity"
             android:exported="true" />
         <activity

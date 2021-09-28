@@ -16,6 +16,7 @@ import com.example.jetpacktutorial.retrofitwithcoroutines.RetrofitOneActivity
 import com.example.jetpacktutorial.roomdb.RoomOneActivity
 import com.example.jetpacktutorial.twowaydatabinding.TwoWayOneActivity
 import com.example.jetpacktutorial.viewmodelbasic.ViewModelTwoActivity
+import com.example.jetpacktutorial.workmanager.WorkManagerOneActivity
 
 class DataBindingActivity : AppCompatActivity() {
 
@@ -82,6 +83,11 @@ class DataBindingActivity : AppCompatActivity() {
 
         binding.btnTwelve.setOnClickListener {
             val intent = Intent(this, NotificationOneActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnThirteen.setOnClickListener {
+            val intent = Intent(this, WorkManagerOneActivity::class.java)
             startActivity(intent)
         }
 
