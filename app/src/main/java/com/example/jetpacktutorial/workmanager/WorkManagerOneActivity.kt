@@ -51,8 +51,14 @@ class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
 
         val compressRequest = OneTimeWorkRequest.Builder(CompressingWorker::class.java).build()
 
+        val downloadingRequest = OneTimeWorkRequest.Builder(DownloadingWorker::class.java).build()
+
+        val parallelWork = mutableListOf<OneTimeWorkRequest>()
+        parallelWork.add(downloadingRequest)
+        parallelWork.add(filterRequest)
+
         WorkManager.getInstance(applicationContext)
-            .beginWith(filterRequest)
+            .beginWith(parallelWork)
             .then(compressRequest)
             .then(uploadRequest)
             .enqueue()

@@ -6,15 +6,15 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import java.lang.Exception
 
-class FilteringWorker(context: Context, params : WorkerParameters) : Worker(context,params){
+class DownloadingWorker(context: Context, params : WorkerParameters) : Worker(context,params) {
     override fun doWork(): Result {
 
         return try {
             for (i in 0..5000) {
-                Log.i("MyTag","Filter $i")
+                Log.i("MyTag", "Download $i")
             }
             Result.success()
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             Result.failure()
         }
     }
