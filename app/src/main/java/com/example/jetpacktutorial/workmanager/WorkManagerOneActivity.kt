@@ -3,9 +3,11 @@ package com.example.jetpacktutorial.workmanager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.work.Constraints
+import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.jetpacktutorial.R
@@ -33,15 +35,33 @@ class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
     }
     private fun oneTimeWorkRequest(){
         val workManager : WorkManager = WorkManager.getInstance(applicationContext)
+
+        val data = Data.Builder().putInt(KEY_COUNT_VALUE,125).build()
+
         val constraints = Constraints.Builder()
             .setRequiresCharging(true)
             .build()
 
-        val uploadRequest = OneTimeWorkRequest.Builder(UploadWorker::class.java).setConstraints(constraints).build()
+        val uploadRequest = OneTimeWorkRequest.Builder(UploadWorker::class.java)
+            .setConstraints(constraints)
+            .setInputData(data)
+            .build()
         WorkManager.getInstance(applicationContext).enqueue(uploadRequest)
 
         workManager.getWorkInfoByIdLiveData(uploadRequest.id).observe(this, Observer {
             binding.tvCount.text = it.state.name
+
+            if(it.state.isFinished)
+            {
+                val data = it.outputData
+                val message = data.getString(UploadWorker.KEY_WORKER)
+                Toast.makeText(this,message,Toast.LENGTH_LONG).show()
+            }
+
         })
+    }
+
+    companion object{
+        const val KEY_COUNT_VALUE = "key_count"
     }
 }
