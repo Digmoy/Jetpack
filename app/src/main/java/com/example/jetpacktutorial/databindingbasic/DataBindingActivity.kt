@@ -8,6 +8,7 @@ import com.example.jetpacktutorial.R
 import com.example.jetpacktutorial.coroutine.CoroutineOneActivity
 import com.example.jetpacktutorial.coroutine.CoroutineThreeActivity
 import com.example.jetpacktutorial.coroutine.CoroutineTwoActivity
+import com.example.jetpacktutorial.dagger.DaggerOneActivity
 import com.example.jetpacktutorial.viewmodelbasic.ViewModelOneActivity
 import com.example.jetpacktutorial.databinding.ActivityDataBindingBinding
 import com.example.jetpacktutorial.navigationcomponent.NavOneActivity
@@ -91,5 +92,9 @@ class DataBindingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnFourteen.setOnClickListener {
+            val intent = Intent(this, DaggerOneActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
