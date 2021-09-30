@@ -46,7 +46,16 @@ class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
             .setConstraints(constraints)
             .setInputData(data)
             .build()
-        WorkManager.getInstance(applicationContext).enqueue(uploadRequest)
+
+        val filterRequest = OneTimeWorkRequest.Builder(FilteringWorker::class.java).build()
+
+        val compressRequest = OneTimeWorkRequest.Builder(CompressingWorker::class.java).build()
+
+        WorkManager.getInstance(applicationContext)
+            .beginWith(filterRequest)
+            .then(compressRequest)
+            .then(uploadRequest)
+            .enqueue()
 
         workManager.getWorkInfoByIdLiveData(uploadRequest.id).observe(this, Observer {
             binding.tvCount.text = it.state.name
