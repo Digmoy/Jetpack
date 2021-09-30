@@ -6,12 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.work.Constraints
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.example.jetpacktutorial.R
 import com.example.jetpacktutorial.databinding.ActivityWorkManagerOneBinding
+import java.util.concurrent.TimeUnit
 
 class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
 
@@ -29,7 +27,8 @@ class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
         when(p0?.id)
         {
             R.id.btn_click ->{
-                oneTimeWorkRequest()
+               // oneTimeWorkRequest()
+                setPeriodicWorkRequest()
             }
         }
     }
@@ -75,6 +74,14 @@ class WorkManagerOneActivity : AppCompatActivity(),View.OnClickListener {
 
         })
     }
+
+    private fun setPeriodicWorkRequest(){
+        val periodicWorkRequest = PeriodicWorkRequest.Builder(DownloadingWorker::class.java,16,TimeUnit.MINUTES).build()
+
+        WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
+
+    }
+
 
     companion object{
         const val KEY_COUNT_VALUE = "key_count"
